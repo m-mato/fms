@@ -18,7 +18,7 @@ public class FeedbackController {
     public Collection<FeedbackDTO> getAll() {
 
         FeedbackDTO feedbackDTO = new FeedbackDTO();
-        feedbackDTO.setMessage("OK !");
+        feedbackDTO.setMessage("Test - OK !");
 
         List<FeedbackDTO> feedbackDTOs = new ArrayList<>();
         feedbackDTOs.add(feedbackDTO);

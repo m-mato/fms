@@ -6,13 +6,22 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="00000000000002" author="mmajdis">
+    <changeSet id="00000000000001" author="mmajdis">
+        <loadData encoding="UTF-8"
+                  file="liquibase/data/0001-load_users.csv"
+                  separator=";"
+                  tableName="user">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="surname" type="string"/>
+        </loadData>
 
         <loadData encoding="UTF-8"
-                  file="liquibase/data/0001-load_init_data.csv"
+                  file="liquibase/data/0001-load_feedback.csv"
                   separator=";"
                   tableName="feedback">
             <column name="id" type="numeric"/>
+            <column name="id_author" type="numeric"/>
             <column name="message" type="string"/>
         </loadData>
     </changeSet>

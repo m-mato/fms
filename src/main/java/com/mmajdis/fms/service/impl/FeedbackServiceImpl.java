@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -22,7 +21,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public List<FeedbackDTO> getAllFeedBack() {
 
-        List<FeedbackDTO>  feedbackDTOList = new ArrayList<>();
+        List<FeedbackDTO> feedbackDTOList = new ArrayList<>();
 
         feedbackRepository.findAll().forEach(feedback -> {
             FeedbackDTO feedbackDTO = new FeedbackDTO();

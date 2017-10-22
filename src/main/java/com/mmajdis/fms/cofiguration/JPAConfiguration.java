@@ -23,8 +23,12 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class JPAConfiguration {
 
+    private final Environment env;
+
     @Autowired
-    private Environment env;
+    public JPAConfiguration(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource dataSource() {

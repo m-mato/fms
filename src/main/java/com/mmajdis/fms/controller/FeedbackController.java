@@ -3,9 +3,7 @@ package com.mmajdis.fms.controller;
 import com.mmajdis.fms.dto.FeedbackDTO;
 import com.mmajdis.fms.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,9 +18,21 @@ public class FeedbackController {
         this.feedbackService = feedbackService;
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public FeedbackDTO create(@RequestBody FeedbackDTO feedbackDTO) {
+
+        return feedbackService.createFeedback(feedbackDTO);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public List<FeedbackDTO> getAll() {
 
-        return feedbackService.getAllFeedBack();
+        return feedbackService.getAllFeedback();
+    }
+
+    @RequestMapping(value = "filter", method = RequestMethod.GET)
+    public List<FeedbackDTO> getByUsername(@RequestParam(name = "username") String username) {
+
+        return feedbackService.getFeedbackByUsername(username);
     }
 }

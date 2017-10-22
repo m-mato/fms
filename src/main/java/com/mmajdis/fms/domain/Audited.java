@@ -23,6 +23,14 @@ public abstract class Audited {
         return updated;
     }
 
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
     @PrePersist
     protected void onCreate() {
         created = new Date();

@@ -12,8 +12,9 @@
                   separator=";"
                   tableName="user">
             <column name="id" type="numeric"/>
-            <column name="name" type="string"/>
-            <column name="surname" type="string"/>
+            <column name="username" type="string"/>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
         </loadData>
 
         <loadData encoding="UTF-8"
@@ -23,6 +24,8 @@
             <column name="id" type="numeric"/>
             <column name="id_author" type="numeric"/>
             <column name="message" type="string"/>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
         </loadData>
     </changeSet>
 </databaseChangeLog>

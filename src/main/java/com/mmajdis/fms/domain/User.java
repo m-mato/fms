@@ -10,11 +10,8 @@ public class User extends Audited {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "surname", nullable = false)
-    private String surname;
+    @Column(name = "username", nullable = false)
+    private String username;
 
     public Long getId() {
         return id;
@@ -24,20 +21,12 @@ public class User extends Audited {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -48,15 +37,15 @@ public class User extends Audited {
 
         User user = (User) o;
 
-        return id.equals(user.id) && name.equals(user.name) && surname.equals(user.surname);
+        if (!id.equals(user.id)) return false;
+        return username.equals(user.username);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + surname.hashCode();
+        result = 31 * result + username.hashCode();
         return result;
     }
 
@@ -64,8 +53,7 @@ public class User extends Audited {
     public String toString() {
         return new StringBuilder().append("User {")
                 .append("id= ").append(id)
-                .append(", name= ").append(name)
-                .append(", surname= ").append(surname)
+                .append(", username= ").append(username)
                 .append('}').toString();
     }
 }

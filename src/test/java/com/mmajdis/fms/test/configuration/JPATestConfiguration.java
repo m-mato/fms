@@ -1,4 +1,4 @@
-package com.mmajdis.fms.cofiguration;
+package com.mmajdis.fms.test.configuration;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,13 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.mmajdis.fms.repository")
 @EnableTransactionManagement
-@Profile("!test")
-public class JPAConfiguration {
+@Profile("test")
+public class JPATestConfiguration {
 
     private final Environment env;
 
     @Autowired
-    public JPAConfiguration(Environment env) {
+    public JPATestConfiguration(Environment env) {
         this.env = env;
     }
 
@@ -34,9 +34,9 @@ public class JPAConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.username"));
-        dataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setUrl(env.getProperty("jdbc.test.url"));
+        dataSource.setUsername(env.getProperty("jdbc.test.username"));
+        dataSource.setPassword(env.getProperty("jdbc.test.password"));
 
         return dataSource;
     }
@@ -49,8 +49,8 @@ public class JPAConfiguration {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.mmajdis.fms.domain");
         factory.setDataSource(dataSource());
+        factory.setPackagesToScan("com.mmajdis.fms.domain");
         factory.afterPropertiesSet();
 
         return factory.getObject();
@@ -69,7 +69,7 @@ public class JPAConfiguration {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setChangeLog("classpath:liquibase/liquibase-changelog.xml");
         liquibase.setDataSource(dataSource());
-        liquibase.setContexts(env.getProperty("env"));
+        liquibase.setContexts("test");
         return liquibase;
     }
 }

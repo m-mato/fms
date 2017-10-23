@@ -6,6 +6,8 @@ import com.mmajdis.fms.dto.FeedbackDTO;
 import com.mmajdis.fms.repository.FeedbackRepository;
 import com.mmajdis.fms.repository.UserRepository;
 import com.mmajdis.fms.service.FeedbackService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,6 +22,8 @@ import java.util.List;
 @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 public class FeedbackServiceImpl implements FeedbackService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FeedbackServiceImpl.class);
+
     private final FeedbackRepository feedbackRepository;
 
     private final UserRepository userRepository;
@@ -32,6 +36,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public FeedbackDTO createFeedback(FeedbackDTO feedbackDTO) {
+
+        validate(feedbackDTO);
 
         User author = userRepository.findFirstByUsername(feedbackDTO.getAuthorUsername());
         if (author == null) {
@@ -57,6 +63,11 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public List<FeedbackDTO> getFeedbackByUsername(String username) {
+
+        if (username == null || username.isEmpty()) {
+            sendValidationError("Username needs to be specified");
+        }
+
         List<FeedbackDTO> feedbackDTOList = new ArrayList<>();
         feedbackRepository.findAllByAuthorUsername(username).forEach(feedback -> feedbackDTOList.add(mapToDTO(feedback)));
 
@@ -79,5 +90,20 @@ public class FeedbackServiceImpl implements FeedbackService {
         feedbackDTO.setAuthorUsername((feedback.getAuthor() != null) ? feedback.getAuthor().getUsername() : null);
 
         return feedbackDTO;
+    }
+
+    private void validate(FeedbackDTO feedbackDTO) {
+        if (feedbackDTO == null) {
+            sendValidationError("Feedback DTO must not be null");
+        } else if (feedbackDTO.getAuthorUsername() == null || feedbackDTO.getAuthorUsername().isEmpty()) {
+            sendValidationError("Author's username needs to be specified");
+        } else if (feedbackDTO.getMessage() == null || feedbackDTO.getMessage().isEmpty()) {
+            sendValidationError("Message needs to be specified");
+        }
+    }
+
+    private void sendValidationError(String message) {
+        LOGGER.debug(message);
+        throw new IllegalArgumentException(message);
     }
 }

@@ -2,6 +2,7 @@ package com.mmajdis.fms.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.time.ZonedDateTime;
 
@@ -12,12 +13,14 @@ public class FeedbackDTO {
     private Long id;
 
     @JsonProperty
+    @NotBlank
     private String message;
 
     @JsonProperty
     private ZonedDateTime created;
 
     @JsonProperty
+    @NotBlank
     private String authorUsername;
 
     public Long getId() {

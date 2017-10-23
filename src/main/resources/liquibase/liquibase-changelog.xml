@@ -5,5 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <!--<include create table scripts (in real DB)></include>-->
+
+    <!--<all profiles>-->
     <include file="liquibase/changelog/0001_load_init_data.xml" relativeToChangelogFile="false"/>
+
+    <!--<only test profile>-->
+    <include file="liquibase/changelog/0002_load_test_data.xml" relativeToChangelogFile="false" context="test"/>
+
 </databaseChangeLog>

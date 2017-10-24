@@ -17,6 +17,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+/**
+ * JPA configuration class. Only non-test profiles.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 @Configuration
 @EnableJpaRepositories(basePackages = "com.mmajdis.fms.repository")
 @EnableTransactionManagement

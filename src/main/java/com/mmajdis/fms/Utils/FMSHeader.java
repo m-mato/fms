@@ -2,6 +2,11 @@ package com.mmajdis.fms.Utils;
 
 import java.util.Objects;
 
+/**
+ * Enum specifying all custom headers in FMS service.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 public enum FMSHeader {
 
     X_FMS_TOKEN("X-FMS-Token");

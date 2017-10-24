@@ -2,6 +2,11 @@ package com.mmajdis.fms.domain;
 
 import javax.persistence.*;
 
+/**
+ * Entity class representing user table.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 @Entity
 @Table(name = "user")
 public class User extends Audited {

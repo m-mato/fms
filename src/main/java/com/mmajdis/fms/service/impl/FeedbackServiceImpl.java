@@ -18,6 +18,12 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service implmentation for operation with {@link FeedbackDTO}.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ * @see FeedbackDTO
+ */
 @Service
 @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 public class FeedbackServiceImpl implements FeedbackService {
@@ -34,6 +40,10 @@ public class FeedbackServiceImpl implements FeedbackService {
         this.userRepository = userRepository;
     }
 
+    /*
+     * (non-Javadoc)
+	 * @see com.mmajdis.fms.service.FeedbackService#createFeedback(FeedbackDTO feedbackDTO)
+	 */
     @Override
     public FeedbackDTO createFeedback(FeedbackDTO feedbackDTO) {
 
@@ -52,6 +62,10 @@ public class FeedbackServiceImpl implements FeedbackService {
         return mapToDTO(feedback);
     }
 
+    /*
+	 * (non-Javadoc)
+	 * @see com.mmajdis.fms.service.FeedbackService#getAllFeedback()
+	 */
     @Override
     public List<FeedbackDTO> getAllFeedback() {
 
@@ -61,6 +75,10 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackDTOList;
     }
 
+    /*
+	 * (non-Javadoc)
+	 * @see com.mmajdis.fms.service.FeedbackService#getFeedbackByUsername(String username)
+	 */
     @Override
     public List<FeedbackDTO> getFeedbackByUsername(String username) {
 

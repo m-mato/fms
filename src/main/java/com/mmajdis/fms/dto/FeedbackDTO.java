@@ -6,6 +6,11 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import java.time.ZonedDateTime;
 
+/**
+ * DTO used to transfer values of Feedback properties.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FeedbackDTO {
 
@@ -23,6 +28,9 @@ public class FeedbackDTO {
     @NotBlank
     private String authorUsername;
 
+    /**
+     * @return database id of feedback.
+     */
     public Long getId() {
         return id;
     }
@@ -31,6 +39,9 @@ public class FeedbackDTO {
         this.id = id;
     }
 
+    /**
+     * @return value of message in feedback.
+     */
     public String getMessage() {
         return message;
     }
@@ -39,6 +50,9 @@ public class FeedbackDTO {
         this.message = message;
     }
 
+    /**
+     * @return date and time specifying when feedback was created.
+     */
     public ZonedDateTime getCreated() {
         return created;
     }
@@ -47,6 +61,9 @@ public class FeedbackDTO {
         this.created = created;
     }
 
+    /**
+     * @return username of author who added feedback.
+     */
     public String getAuthorUsername() {
         return authorUsername;
     }

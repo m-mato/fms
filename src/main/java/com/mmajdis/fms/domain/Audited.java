@@ -6,6 +6,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.util.Date;
 
+/**
+ * Base abstract class for entities which will hold
+ * definitions for created and updated date and time.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 @MappedSuperclass
 public abstract class Audited {
 

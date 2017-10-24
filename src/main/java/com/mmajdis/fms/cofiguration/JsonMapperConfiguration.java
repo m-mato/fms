@@ -6,12 +6,14 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Json mapper configuration class.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 @Configuration
 public class JsonMapperConfiguration implements FactoryBean<ObjectMapper> {
 
-    /**
-     * Json Mapper.
-     */
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {

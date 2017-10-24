@@ -2,6 +2,11 @@ package com.mmajdis.fms.domain;
 
 import javax.persistence.*;
 
+/**
+ * Entity class representing feedback table.
+ *
+ * @author Matej Majdis [<a href="mailto:mato.majdis@gmail.com">mato.majdis@gmail.com</a>]
+ */
 @Entity
 @Table(name = "feedback")
 public class Feedback extends Audited {

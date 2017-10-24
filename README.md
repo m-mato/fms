@@ -1,10 +1,12 @@
 # FMS
 ## Feedback Management Service
 
-This repository contains demonstration project providing REST API for management of user's feedback typically given for example
+This repository contains demonstration project providing [REST API](https://github.com/m-mato/fms/wiki/FMS---API)
+for management of user's feedback typically given for example
 on anonymous forums, company pages or product portals.
 
-As described above this service only provides REST API, thus there is no user interface. UI module is supposed to be chosen and implemented by
+As described above this service only provides [REST API](https://github.com/m-mato/fms/wiki/FMS---API),
+thus there is no user interface. UI module is supposed to be chosen and implemented by
 FMS's final user.
 
 FMS's API is very intuitive and easy to use. Feedback management works with anonymous user so there is no need of registration and

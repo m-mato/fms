@@ -27,7 +27,7 @@ After cloning repository and choosing right branch first thing to do is to build
 For the first time Maven will load all dependencies needed for FMS so it may take a while.
 
 ### Application startup
-After build there is only one thing left and it's application startup with Spring Boot. You can do so one of 2 following ways.
+After build there is only one thing left and it's application startup with Spring Boot. After this application will run in default settings on localhost:8080. You can do so one of 2 following ways.
 
 #### Using IDE
 By running main class named FMSApplication.

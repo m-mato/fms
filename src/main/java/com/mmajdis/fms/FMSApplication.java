@@ -20,11 +20,11 @@ public class FMSApplication {
 
     public static void main(String[] args) {
 
-        if (null != System.getProperty(ENV_UPPER)) {
+        if (System.getProperty(ENV_UPPER) != null) {
             System.setProperty(ENV, System.getProperty(ENV_UPPER));
         }
-        if (null == System.getProperty(ENV) || System.getProperty(ENV).isEmpty()) {
-            System.setProperty(ENV, ENV);
+        if (System.getProperty(ENV) == null || System.getProperty(ENV).isEmpty()) {
+            System.setProperty(ENV, "local");
         }
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         SpringApplication.run(FMSApplication.class, args);
